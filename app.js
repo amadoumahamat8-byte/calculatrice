@@ -65,6 +65,19 @@ function insertTextAtCaret(text) {
   updateDisplay();
 }
 
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
+    navigator.userAgent
+  );
+}
+
+if (isMobile()) {
+  expressionEl.addEventListener("focus", (e) => {
+    e.preventDefault();
+    expressionEl.blur();
+  });
+}
+
 function deleteCharBeforeCaret() {
   const sel = window.getSelection();
   if (!sel.rangeCount) {
