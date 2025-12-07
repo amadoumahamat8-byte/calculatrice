@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice Web</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2196f3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="header">
+        <button
+          id="history-toggle"
+          aria-label="Afficher ou masquer l'historique"
+        >
+          📜
+        </button>
+        <button id="theme-toggle" aria-label="Basculer le thème sombre/clair">
+          🌙
+        </button>
+      </div>
+      <div class="display">
+        <div
+          id="expression"
+          contenteditable="true"
+          placeholder="Tapez ou modifiez votre expression"
+          aria-label="Expression actuelle"
+        ></div>
+        <div id="result" aria-label="Résultat"></div>
+      </div>
+      <div class="buttons">
+        <button data-value="AC" aria-label="Tout effacer">AC</button>
+        <button data-value="DEL" aria-label="Supprimer un caractère">
+          DEL
+        </button>
+        <button data-value="%" aria-label="Pourcentage">%</button>
+        <button data-value="÷" aria-label="Division">÷</button>
+        <button data-value="7" aria-label="Sept">7</button>
+        <button data-value="8" aria-label="Huit">8</button>
+        <button data-value="9" aria-label="Neuf">9</button>
+        <button data-value="×" aria-label="Multiplication">×</button>
+        <button data-value="4" aria-label="Quatre">4</button>
+        <button data-value="5" aria-label="Cinq">5</button>
+        <button data-value="6" aria-label="Six">6</button>
+        <button data-value="-" aria-label="Soustraction">-</button>
+        <button data-value="1" aria-label="Un">1</button>
+        <button data-value="2" aria-label="Deux">2</button>
+        <button data-value="3" aria-label="Trois">3</button>
+        <button data-value="+" aria-label="Addition">+</button>
+        <button data-value="0" aria-label="Zéro">0</button>
+        <button data-value="." aria-label="Point décimal">.</button>
+        <button data-value="(" aria-label="Parenthèse ouvrante">(</button>
+        <button data-value=")" aria-label="Parenthèse fermante">)</button>
+        <button data-value="=" aria-label="Égal">=</button>
+      </div>
+      <div class="history" id="history" aria-label="Historique des calculs">
+        <h3>Historique</h3>
+        <ul id="history-list"></ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then((reg) => console.log("Service Worker enregistré", reg))
+            .catch((err) => console.log("Erreur enregistrement SW:", err));
+        });
+      }
+    </script>
+  </body>
+</html>
