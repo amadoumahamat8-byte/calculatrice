@@ -117,6 +117,11 @@ body {
   line-height: 1.2;
 }
 
+#expression,
+#result {
+  color: white !important;
+}
+
 /* BOUTONS */
 .buttons {
   width: 100%;
